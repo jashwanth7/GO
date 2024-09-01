@@ -1,0 +1,29 @@
+Channels in Go:
+
+-> Channels in Go are basically used to communicate between goroutines ensuring that the data is passed safely and in a synchronized manner.
+-> Basically it is a Go data structure that allows goroutines to send and recieve values.
+-> Channel is created using the 'make' function.
+                     ch := make(chan int)
+-> Types of channels : 
+            1. Unbuffered Channels
+            2. Buffered Channels
+
+-> Unbuffered Channels: 1. They do have any capacity to store or hold the data.
+                        2. When a value is sent to an unbuffered channel , the send goroutine is blocked until another goroutine receives value and viceversa.
+
+                Pros:   1. Sending and receiving happens simultaneously which makes it easier to handle data efficiently.
+                        2. Unbuffered channels provides strong synchronization ensuring data is passed exactly when both sender and receiver are ready.
+
+                Cons:   1. Less flexibility and chance of deadlocks if sender and reciever are not coordinated properly.
+
+-> Buffered Channels:   1. They have a capacity to store a specied number of values.
+
+                Pros:   1. It allows sender to continue working without waiting for the receiver.
+                        2. This prevents deadlock since the buffer provides a cushion by allowing one side to work without waiting for the other.
+
+                Cons:   1. It can lead to blocking if the capacity is exceeded or not managed properly which can add complexity to the code.
+
+-> Which channel is better for goroutine?
+        1. Unbuffered channels are simple and they ensure synchronization but there is a chance of deadlock.
+        2. Buffered channels are more flexible and reduce deadlocks but requires manging the buffer capacity which leads to complexity.
+        3. So, it is better to choose the type of channel depending upon our usecase.
