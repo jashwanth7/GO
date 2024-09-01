@@ -1,6 +1,7 @@
 package main
 
 import (
+	"GO/prime"
 	"fmt"
 )
 
@@ -28,5 +29,16 @@ func main() {
 	sum2 := <-ch
 	total := sum1 + sum2
 
-	fmt.Printf("Total: %d\n", total)
+	fmt.Printf("Total: %d\n\n", total)
+
+	fmt.Println("First 10 Prime Numbers :")
+
+	CH := make(chan int)
+
+	go prime.PrimeGenerator(30, CH)
+
+	for primeNum := range CH {
+		fmt.Print(primeNum)
+		fmt.Print(" ")
+	}
 }
